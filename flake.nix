@@ -13,8 +13,8 @@
     in
       rec {
         packages.x86_64-linux.hey = pkgs.hello;
-        defaultPackage.x86_64-linux = pkgs.hello;
-        hydraJobs.x86_64-linux.test = pkgs.hello;
+        defaultPackage.x86_64-linux = pkgs.writeText "x" "o";
+        hydraJobs.x86_64-linux.test = pkgs.writeText "x" "Hello";
       };
   
 }
