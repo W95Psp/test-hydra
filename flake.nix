@@ -18,9 +18,9 @@
           mkdir -p $out/nix-support $out/test
           echo 'doc Blurpon123 $out/test/a' >> $out/nix-support/hydra-build-products
           echo "doc manual $out/test" >> $out/nix-support/hydra-build-products
-          echo 'Xhere1643031309XXX' > $out/test/a
-          echo 'Yhere1643031309YYY' > $out/test/b
-          echo '<b>Z/hey<b>here1643031309PPP' > $out/test/index.html
+          echo 'OHOHXhere1643031309XXX' > $out/test/a
+          echo 'OHOHYhere1643031309YYY' > $out/test/b
+          echo '<b>ZOHOH/hey<b>here1643031309PPP' > $out/test/index.html
         '';
       };
   
