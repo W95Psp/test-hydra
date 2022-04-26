@@ -15,8 +15,7 @@ let
       emailoverride = "";
       keepnr = 3;
       flake = "git+ssh://git@github.com/W95Psp/test-hydra";
-    }
-
+    };
   };
 in {
   jobsets = {
