@@ -1,5 +1,4 @@
 {
-  nixpkgs
 }:
 let
   pkgs = import nixpkgs {};
