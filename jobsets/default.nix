@@ -18,7 +18,5 @@ let
     };
   };
 in {
-  jobsets = {
-    jobsets = pkgs.writeText "spec.json" (builtins.toJSON jobsetsAttrs);
-      };
+  jobsets = pkgs.writeText "spec.json" (builtins.toJSON jobsetsAttrs);
 }
