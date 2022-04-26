@@ -16,14 +16,14 @@
         defaultPackage.x86_64-linux = pkgs.writeText "x" "o";
         hydraJobs.x86_64-linux.test = pkgs.runCommand "test" {} ''
           mkdir -p $out/nix-support $out/test
-          echo "je suxxis là"
+          echo "je suis là"
           echo "je suis là"
           echo "asdasjd"
           echo 'doc Blurpon123 $out/test/a' >> $out/nix-support/hydra-build-products
           echo "doc manual $out/test" >> $out/nix-support/hydra-build-products
-          echo 'XXOHOHXhere1643031309XXX' > $out/test/a
-          echo 'XXOHOHYhere1643031309YYY' > $out/test/b
-          echo '<b>XXZOHOH/hey<b>here1643031309PPP' > $out/test/index.html
+          echo 'HEEEY' > $out/test/a
+          echo 'XXOHOpppp' > $out/test/b
+          echo '<b>XXZOHOH/hey<b>0000000000' > $out/test/index.html
         '';
       };
   
