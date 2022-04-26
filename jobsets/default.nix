@@ -1,3 +1,3 @@
-{ nixpkgs }: let pkgs = import nixpkgs {}; in {
+let pkgs = import nixpkgs {}; in {
   inherit (pkgs) hello;
 }
