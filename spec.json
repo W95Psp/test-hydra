@@ -10,6 +10,7 @@
     "emailoverride": "",
     "keepnr": 3,
     "inputs": {
-         "src": { "type": "git", "value": "git@github.com:W95Psp/test-hydra.git", "emailresponsible": false }
+        "src": { "type": "git", "value": "git@github.com:W95Psp/test-hydra.git", "emailresponsible": false },
+        "nixpkgs": { "type": "git", "value": "git://github.com/NixOS/nixpkgs.git", "emailresponsible": false }
     }
 }
