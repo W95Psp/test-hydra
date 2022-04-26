@@ -1,7 +1,6 @@
 {
 }:
 let
-  pkgs = import nixpkgs {};
   jobsetsAttrs = {
     nixpkgs = {
       enabled = 1;
