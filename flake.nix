@@ -21,8 +21,8 @@
           echo "asdasjd"
           echo 'doc Blurpon123 $out/test/a' >> $out/nix-support/hydra-build-products
           echo "doc manual $out/test" >> $out/nix-support/hydra-build-products
-          echo 'XXOHOHXhere1643031309XXX' > $out/test/a
-          echo 'XXOHOHYhere1643031309YYY' > $out/test/b
+          echo 'XXOHOHXhere1643031309Xxx' > $out/test/a
+          echo 'XXOHOHYhere1643031309YYYaa' > $out/test/b
           echo '<b>XXZOHOH/hey<b>here1643031309PPP' > $out/test/index.html
         '';
       };
