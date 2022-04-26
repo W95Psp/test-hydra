@@ -1,0 +1,16 @@
+{
+    "enabled": 1,
+    "hidden": false,
+    "description": "Jobsets",
+    "nixexprinput": "src",
+    "nixexprpath": "jobsets/default.nix",
+    "checkinterval": 60,
+    "schedulingshares": 420,
+    "enableemail": true,
+    "emailoverride": "",
+    "keepnr": 3,
+    "inputs": {
+         "src": { "type": "git", "value": "git+ssh://git@github.com/W95Psp/test-hydra?ref=master", "emailresponsible": false }
+         ,"PRS": { "type": "githubpulls", "value": "W95Psp test-hydra", "emailresponsible": false }
+    }
+}
