@@ -18,5 +18,11 @@ let
     };
   };
 in {
-  jobsets = pkgs.writeText "spec.json" (builtins.toJSON jobsetsAttrs);
+  # jobsets = pkgs.writeText "spec.json" (builtins.toJSON jobsetsAttrs);
+  jobsets = pkgs.runCommand "spec.json" {} ''
+    cat <<EOF
+    ${builtins.toJSON {inherit jobsetsAttrs prs;}}
+    EOF
+    cp ${pkgs.writeText "spec.json" (builtins.toJSON jobsetsAttrs)} $out
+  '';
 }
