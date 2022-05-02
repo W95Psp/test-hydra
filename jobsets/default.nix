@@ -16,7 +16,7 @@ let
     contents = builtins.toJSON contents;
   };
   mk = id: info: {
-    name = "pr${throw info}";
+    name = "pr${id}";
     value = {
       enabled = 1;
       type = 1;
@@ -36,8 +36,9 @@ let
       builtins.mapAttrs (name: value: {inherit name value;}) l
     );
   throwJSON = x: throw (builtins.toJSON x);
+  prs-value = builtins.fromJSON (builtins.readFile prs);
 in
 {
   # jobsets = throw (builtins.toJSON prs);
-  jobsets = throwJSON (builtins.listToAttrs (map ({name, value}: mk name value) (attrsToList prs)));
+  jobsets = throwJSON (builtins.listToAttrs (map ({name, value}: mk name value) (attrsToList prs-value)));
 }
