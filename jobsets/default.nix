@@ -1,6 +1,8 @@
 {
+  nixpkgs, prs
 }:
 let
+  pkgs = import nixpkgs {};
   jobsetsAttrs = {
     nixpkgs = {
       enabled = 1;
@@ -16,6 +18,5 @@ let
     };
   };
 in {
-  jobsets = #pkgs.writeText "spec.json" (builtins.toJSON jobsetsAttrs);
-    builtins.toFile "spec.json" (builtins.toJSON jobsetsAttrs);
+  jobsets = pkgs.writeText "spec.json" (builtins.toJSON jobsetsAttrs);
 }
