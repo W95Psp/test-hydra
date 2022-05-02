@@ -4,24 +4,49 @@
   prs
 }:
 let
-  pkgs = import nixpkgs {};
+  # pkgs = import nixpkgs {};
+  makeSpec = contents: builtins.derivation {
+    name = "spec.json";
+    system = "x86_64-linux";
+    preferLocalBuild = true;
+    allowSubstitutes = false;
+    builder = "/bin/sh";
+    args = [ (builtins.toFile "builder.sh" ''
+      echo "$contents" > $out
+    '') ];
+    contents = builtins.toJSON contents;
+  };  
 in
 {
-  jobsets = pkgs.writeText "spec.json" (builtins.toJSON {
-    merde = prs;
-    hello = {
+  jobsets = makeSpec {
+    foo = {
       enabled = 1;
+      type = 1;
       hidden = false;
-      description = "TEST";
-      checkinterval = 0;
-      schedulingshares = 100;
+      description = "foo description";
+      flake = "git+ssh://git@github.com/W95Psp/test-hydra";
+      checkinterval = 300;
+      schedulingshares = 10;
       enableemail = false;
-      enable_dynamic_run_command = false;
-      emailoverride = false;
-      keepnr = 3;
-      flake = "github:W95Psp/test-hydra/master";
+      emailoverride = "";
+      keepnr = 50;
     };
-  });
+  };
+  # jobsets = pkgs.writeText "spec.json" (builtins.toJSON {
+  #   merde = prs;
+  #   hello = {
+  #     enabled = 1;
+  #     hidden = false;
+  #     description = "TEST";
+  #     checkinterval = 0;
+  #     schedulingshares = 100;
+  #     enableemail = false;
+  #     enable_dynamic_run_command = false;
+  #     emailoverride = false;
+  #     keepnr = 3;
+  #     flake = "github:W95Psp/test-hydra/master";
+  #   };
+  # });
 }
 # throw (builtins.toJSON declInput)
 # {
