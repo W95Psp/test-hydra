@@ -1,4 +1,7 @@
 {
+  declInput,
+  asdasd
+}: {
   jobsets = {
     jobsets = {
       
