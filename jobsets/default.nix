@@ -6,7 +6,6 @@ let
   pkgs = import nixpkgs {};
 in
 {
-  xxx = 0;
   jobsets = pkgs.writeText "spec.json" (builtins.toJSON {
     hello = {
       enabled = 1;
