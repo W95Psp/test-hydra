@@ -6,9 +6,21 @@ let
   pkgs = import nixpkgs {};
 in
 {
-  # jobsets = declInput + "./test.json";
-  # jobsets = declInput + "./test.json";
-  jobsets = pkgs.writeText "spec.json" (builtins.toJSON {});
+  xxx = 0;
+  jobsets = pkgs.writeText "spec.json" (builtins.toJSON {
+    hello = {
+      enabled = 1;
+      hidden = false;
+      description = "TEST";
+      checkinterval = 0;
+      schedulingshares = 100;
+      enableemail = false;
+      enable_dynamic_run_command = false;
+      emailoverride = false;
+      keepnr = 3;
+      flake = "nixpkgs#hello";
+    };
+  });
 }
 # throw (builtins.toJSON declInput)
 # {
