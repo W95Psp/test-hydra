@@ -31,7 +31,10 @@ let
       keepnr = 50;
     };
   };
-  attrsToList = builtins.mapAttrs (name: value: {inherit name value;});
+  attrsToList = l:
+    builtins.attrValues (
+      builtins.mapAttrs (name: value: {inherit name value;}) l
+    );
   throwJSON = x: throw (builtins.toJSON x);
 in
 {
