@@ -29,8 +29,9 @@ let
   };
 in
 {
-  jobsets = builtins.trace (builtins.toJSON prs) (makeSpec (builtins.listToAttrs (map (branch: {
-    name = branch;
-    value = mk branch;
-  }) ["master"])));
+  jobsets = throw (builtins.toJSON prs);
+  # jobsets = makeSpec (builtins.listToAttrs (map (branch: {
+  #   name = branch;
+  #   value = mk branch;
+  # }) ["master"]));
 }
