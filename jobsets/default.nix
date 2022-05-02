@@ -1,4 +1,4 @@
-_: { jobsets = {jobsets = ./test.json;}; }
+_: { jobsets = throw "hello"; }
 
 # {
 #   nixpkgs#@, prs, declInput
