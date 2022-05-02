@@ -1,4 +1,4 @@
-_: { jobsets = ./test.json; }
+_: { xjobsets = ./test.json; }
 
 # {
 #   nixpkgs#@, prs, declInput
