@@ -1,7 +1,4 @@
-{
-  declInput,
-  prs
-}:
+{ declInput, prs }:
 let
   makeSpec = contents: builtins.derivation {
     name = "spec.json";
