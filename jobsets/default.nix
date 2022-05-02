@@ -1,4 +1,6 @@
-xxx
+{
+  jobsets = {};
+}
 
 # {
 #   nixpkgs#@, prs, declInput
