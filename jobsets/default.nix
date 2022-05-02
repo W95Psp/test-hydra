@@ -17,7 +17,7 @@ in
       enable_dynamic_run_command = false;
       emailoverride = false;
       keepnr = 3;
-      flake = "nixpkgs#hello";
+      flake = "github:W95Psp/test-hydra";
     };
   });
 }
