@@ -16,18 +16,16 @@ let
     contents = builtins.toJSON contents;
   };
   mk = branch: makeSpec {
-    ${branch} = {
-      enabled = 1;
-      type = 1;
-      hidden = false;
-      description = "foo description";
-      flake = "git+ssh://git@github.com/W95Psp/test-hydra?ref=${branch}";
-      checkinterval = 300;
-      schedulingshares = 10;
-      enableemail = false;
-      emailoverride = "";
-      keepnr = 50;
-    };
+    enabled = 1;
+    type = 1;
+    hidden = false;
+    description = "foo description";
+    flake = "git+ssh://git@github.com/W95Psp/test-hydra?ref=${branch}";
+    checkinterval = 300;
+    schedulingshares = 10;
+    enableemail = false;
+    emailoverride = "";
+    keepnr = 50;
   };
 in
 {
