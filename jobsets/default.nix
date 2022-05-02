@@ -1,12 +1,14 @@
 {
   declInput,
-  nixpkgs
+  nixpkgs,
+  prs
 }:
 let
   pkgs = import nixpkgs {};
 in
 {
   jobsets = pkgs.writeText "spec.json" (builtins.toJSON {
+    merde = prs;
     hello = {
       enabled = 1;
       hidden = false;

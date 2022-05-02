@@ -11,7 +11,8 @@
     "keepnr": 3,
     "inputs": {
 	"nixpkgs": { "type": "git", "value": "https://github.com/NixOS/nixpkgs.git nixos-21.11", "emailresponsible": false },
-	"src": { "type": "git", "value": "https://github.com/W95Psp/test-hydra.git master", "emailresponsible": false }
+	"src": { "type": "git", "value": "https://github.com/W95Psp/test-hydra.git master", "emailresponsible": false },
+        "prs": { "type": "githubpulls", "value": "W95Psp test-hydra", "emailresponsible": false }
     }
 }
 
