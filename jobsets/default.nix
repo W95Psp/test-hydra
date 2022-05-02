@@ -1,6 +1,5 @@
 {
-  declInput,
-  asdasd
+  declInput
 }: {
   jobsets = {
     jobsets = {
