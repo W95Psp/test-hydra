@@ -22,7 +22,7 @@ let
       type = 1;
       hidden = false;
       description = "PR ${id}: ${info.title}";
-      flake = "git+ssh://git@github.com/${info.head.repo.full_namel}?ref=${info.head.ref}";
+      flake = "git+ssh://git@github.com/${info.head.repo.full_name}?ref=${info.head.ref}";
       checkinterval = 300;
       schedulingshares = 10;
       enableemail = false;
