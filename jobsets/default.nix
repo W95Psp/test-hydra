@@ -16,7 +16,7 @@ let
     contents = builtins.toJSON contents;
   };
   mk = id: info: {
-    name = "pr${id}";
+    name = "pr${throw info}";
     value = {
       enabled = 1;
       type = 1;
