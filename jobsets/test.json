@@ -1,14 +1,22 @@
-{    
-    "branch2": {
-	"checkinterval": 100,
-	"description": "branch 2",
-	"emailoverride": "",
-	"enabled": 1,
-	"enableemail": false,
-	"flake": "github:tomberek/hydra-demo/branch2",
-	"hidden": false,
-	"keepnr": 10,
-	"schedulingshares": 100,
-	"type": 1
+{
+  "nixpkgs": {
+    "enabled": 1,
+    "hidden": false,
+    "description": "Nixpkgs",
+    "nixexprinput": "nixpkgs",
+    "nixexprpath": "pkgs/top-level/release.nix",
+    "checkinterval": 300,
+    "schedulingshares": 100,
+    "enableemail": false,
+    "enable_dynamic_run_command": false,
+    "emailoverride": "",
+    "keepnr": 3,
+    "inputs": {
+      "nixpkgs": {
+          "type": "git",
+          "value": "git://github.com/NixOS/nixpkgs.git master",
+          "emailresponsible": false
+      }
     }
+  }
 }
