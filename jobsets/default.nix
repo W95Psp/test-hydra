@@ -32,8 +32,9 @@ let
     };
   };
   attrsToList = builtins.mapAttrs (name: value: {inherit name value;});
+  throwJSON = x: throw (builtins.toJSON x);
 in
 {
   # jobsets = throw (builtins.toJSON prs);
-  jobsets = makeSpec (builtins.listToAttrs (map ({name, value}: mk name value) (attrsToList prs)));
+  jobsets = throwJSON (builtins.listToAttrs (map ({name, value}: mk name value) (attrsToList prs)));
 }
