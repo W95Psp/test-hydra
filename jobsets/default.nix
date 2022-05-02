@@ -11,11 +11,13 @@ let
     '') ];
     contents = builtins.toJSON contents;
   };
-  mkPR = id: info: {
+  jobOfPR = id: info: {
     name = "pr${id}";
-    value = mk "PR ${id}: ${info.title}" "git+ssh://git@github.com/${info.head.repo.full_name}?ref=${info.head.ref}";
+    value = makeJob
+      "PR ${id}: ${info.title}"
+      "git+ssh://git@github.com/${info.head.repo.full_name}?ref=${info.head.ref}";
   };
-  mk = description: flake: {
+  makeJob = description: flake: {
     inherit description flake;
     enabled = 1;
     type = 1;
@@ -30,14 +32,12 @@ let
     builtins.attrValues (
       builtins.mapAttrs (name: value: {inherit name value;}) l
     );
-  throwJSON = x: throw (builtins.toJSON x);
   prs-value = builtins.fromJSON (builtins.readFile prs);
 in
 {
-  # jobsets = throw (builtins.toJSON prs);
   jobsets = makeSpec (
-    builtins.listToAttrs (map ({name, value}: mkPR name value) (attrsToList prs-value)) // {
-      master = mk "master" "git+ssh://git@github.com/W95Psp/test-hydra";
+    builtins.listToAttrs (map ({name, value}: jobOfPR name value) (attrsToList prs-value)) // {
+      master = makeJob "master" "git+ssh://git@github.com/W95Psp/test-hydra";
     }
   );
 }
