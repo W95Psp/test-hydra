@@ -1,9 +1,13 @@
 {
   declInput
 }:
+let
+  pkgs = import <nixpkgs> {};
+in
 {
-  jobsets = declInput + "./test.json";
-
+  # jobsets = declInput + "./test.json";
+  # jobsets = declInput + "./test.json";
+  jobsets = pkgs.writeText "spec.json" (builtins.toJSON {});
 }
 # throw (builtins.toJSON declInput)
 # {
