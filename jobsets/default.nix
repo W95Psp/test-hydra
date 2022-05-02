@@ -1,6 +1,5 @@
 {
   declInput,
-  nixpkgs,
   prs
 }:
 let
