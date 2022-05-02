@@ -1,4 +1,4 @@
-_: { jobsets = throw "hello"; }
+_: throw "hello"
 
 # {
 #   nixpkgs#@, prs, declInput
