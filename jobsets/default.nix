@@ -2,6 +2,7 @@
   declInput
 }:
 {
+  jobsets = "${./test.json}";
 
 }
 # throw (builtins.toJSON declInput)
