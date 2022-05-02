@@ -1,5 +1,5 @@
 {
-  nixpkgs, prs
+  nixpkgs, prs, declInput
 }:
 let
   pkgs = import nixpkgs {};
