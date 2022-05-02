@@ -40,5 +40,5 @@ let
 in
 {
   # jobsets = throw (builtins.toJSON prs);
-  jobsets = throwJSON (builtins.listToAttrs (map ({name, value}: mk name value) (attrsToList prs-value)));
+  jobsets = makeSpec (builtins.listToAttrs (map ({name, value}: mk name value) (attrsToList prs-value)));
 }
