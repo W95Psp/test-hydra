@@ -8,8 +8,5 @@
     "schedulingshares": 420,
     "enableemail": true,
     "emailoverride": "",
-    "keepnr": 3,
-    "inputs": {
-	
-    }
+    "keepnr": 3
 }
