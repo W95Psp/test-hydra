@@ -8,5 +8,9 @@
     "schedulingshares": 420,
     "enableemail": true,
     "emailoverride": "",
-    "keepnr": 3 
+    "keepnr": 3,
+    "inputs": {
+	"nixpkgs": { "type": "git", "value": "git@github.com:NixOS/nixxxpkgs.git nixos-21.11", "emailresponsible": false },
+        "prs": { "type": "githubpulls", "value": "W95Psp test-hydra", "emailresponsible": false }
+    }
 }
