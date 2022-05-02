@@ -15,23 +15,25 @@ let
     '') ];
     contents = builtins.toJSON contents;
   };
-  mk = branch: {
-    enabled = 1;
-    type = 1;
-    hidden = false;
-    description = "foo description";
-    flake = "git+ssh://git@github.com/W95Psp/test-hydra?ref=${branch}";
-    checkinterval = 300;
-    schedulingshares = 10;
-    enableemail = false;
-    emailoverride = "";
-    keepnr = 50;
+  mk = id: info: {
+    name = "pr${id}";
+    value = {
+      enabled = 1;
+      type = 1;
+      hidden = false;
+      description = "PR ${id}: ${info.title}";
+      flake = "git+${info.head.repo.ssh_url}?ref=${info.head.ref}";
+      # flake = "git+ssh://git@github.com/W95Psp/test-hydra?ref=${branch}";
+      checkinterval = 300;
+      schedulingshares = 10;
+      enableemail = false;
+      emailoverride = "";
+      keepnr = 50;
+    };
   };
+  attrsToList = builtins.mapAttrs (name: value: {inherit name value;});
 in
 {
-  jobsets = throw (builtins.toJSON prs);
-  # jobsets = makeSpec (builtins.listToAttrs (map (branch: {
-  #   name = branch;
-  #   value = mk branch;
-  # }) ["master"]));
+  # jobsets = throw (builtins.toJSON prs);
+  jobsets = makeSpec (builtins.listToAttrs (map ({name, value}: mk name value) (attrsToList prs)));
 }
