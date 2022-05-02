@@ -18,11 +18,12 @@ let
     };
   };
 in {
+  jobsets = builtins.throw "xxx";
   # jobsets = pkgs.writeText "spec.json" (builtins.toJSON jobsetsAttrs);
-  jobsets = pkgs.runCommand "spec.json" {} ''
-    cat <<EOF
-    ${builtins.toJSON {inherit jobsetsAttrs prs;}}
-    EOF
-    cp ${pkgs.writeText "spec.json" (builtins.toJSON jobsetsAttrs)} $out
-  '';
+  # jobsets = pkgs.runCommand "spec.json" {} ''
+  #   cat <<EOF
+  #   ${builtins.toJSON {inherit jobsetsAttrs prs;}}
+  #   EOF
+  #   cp ${pkgs.writeText "spec.json" (builtins.toJSON jobsetsAttrs)} $out
+  # '';
 }
