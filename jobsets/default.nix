@@ -2,7 +2,7 @@
   declInput
 }:
 {
-  jobsets = "${declInput}./test.json";
+  jobsets = declInput + "./test.json";
 
 }
 # throw (builtins.toJSON declInput)
