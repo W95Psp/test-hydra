@@ -1,12 +1,14 @@
 {
   declInput
-}: {
-  jobsets = {
-    jobsets = {
+}:
+throw (builtins.toJSON declInput)
+# {
+#   jobsets = {
+#     jobsets = {
       
-    };
-  };
-}
+#     };
+#   };
+# }
 
 # {
 #   nixpkgs#@, prs, declInput
