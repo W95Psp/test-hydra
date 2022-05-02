@@ -1,7 +1,10 @@
 {
   declInput
 }:
-throw (builtins.toJSON declInput)
+{
+
+}
+# throw (builtins.toJSON declInput)
 # {
 #   jobsets = {
 #     jobsets = {
