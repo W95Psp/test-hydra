@@ -4,7 +4,6 @@
   prs
 }:
 let
-  # pkgs = import nixpkgs {};
   makeSpec = contents: builtins.derivation {
     name = "spec.json";
     system = "x86_64-linux";
@@ -15,16 +14,14 @@ let
       echo "$contents" > $out
     '') ];
     contents = builtins.toJSON contents;
-  };  
-in
-{
-  jobsets = makeSpec {
-    foo = {
+  };
+  mk = branch: makeSpec {
+    ${branch} = {
       enabled = 1;
       type = 1;
       hidden = false;
       description = "foo description";
-      flake = "git+ssh://git@github.com/W95Psp/test-hydra";
+      flake = "git+ssh://git@github.com/W95Psp/test-hydra?ref=${branch}";
       checkinterval = 300;
       schedulingshares = 10;
       enableemail = false;
@@ -32,58 +29,10 @@ in
       keepnr = 50;
     };
   };
-  # jobsets = pkgs.writeText "spec.json" (builtins.toJSON {
-  #   merde = prs;
-  #   hello = {
-  #     enabled = 1;
-  #     hidden = false;
-  #     description = "TEST";
-  #     checkinterval = 0;
-  #     schedulingshares = 100;
-  #     enableemail = false;
-  #     enable_dynamic_run_command = false;
-  #     emailoverride = false;
-  #     keepnr = 3;
-  #     flake = "github:W95Psp/test-hydra/master";
-  #   };
-  # });
+in
+{
+  jobsets = builtins.listToAttrs (map (branch: {
+    name = branch;
+    value = mk branch;
+  }) ["master"]);
 }
-# throw (builtins.toJSON declInput)
-# {
-#   jobsets = {
-#     jobsets = {
-      
-#     };
-#   };
-# }
-
-# {
-#   nixpkgs#@, prs, declInput
-#     ,...
-# }:
-# let
-#   pkgs = import nixpkgs {};
-#   jobsetsAttrs = {
-#     nixpkgs = {
-#       enabled = 1;
-#       hidden = false;
-#       description = "TEST";
-#       checkinterval = 0;
-#       schedulingshares = 100;
-#       enableemail = false;
-#       enable_dynamic_run_command = false;
-#       emailoverride = "";
-#       keepnr = 3;
-#       flake = "git+ssh://git@github.com/W95Psp/test-hydra";
-#     };
-#   };
-# in {
-#   jobsets = builtins.throw "xxx";
-#   # jobsets = pkgs.writeText "spec.json" (builtins.toJSON jobsetsAttrs);
-#   # jobsets = pkgs.runCommand "spec.json" {} ''
-#   #   cat <<EOF
-#   #   ${builtins.toJSON {inherit jobsetsAttrs prs;}}
-#   #   EOF
-#   #   cp ${pkgs.writeText "spec.json" (builtins.toJSON jobsetsAttrs)} $out
-#   # '';
-# }
