@@ -15,7 +15,7 @@ let
     '') ];
     contents = builtins.toJSON contents;
   };
-  mk = branch: makeSpec {
+  mk = branch: {
     enabled = 1;
     type = 1;
     hidden = false;
