@@ -29,8 +29,8 @@ let
   };
 in
 {
-  jobsets = builtins.listToAttrs (map (branch: {
+  jobsets = throw (builtins.toJSON (builtins.listToAttrs (map (branch: {
     name = branch;
     value = mk branch;
-  }) ["master"]);
+  }) ["master"])));
 }
