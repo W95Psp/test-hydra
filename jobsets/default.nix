@@ -1,4 +1,4 @@
-_: throw "hello"
+xxx
 
 # {
 #   nixpkgs#@, prs, declInput
