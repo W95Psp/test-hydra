@@ -22,8 +22,7 @@ let
       type = 1;
       hidden = false;
       description = "PR ${id}: ${info.title}";
-      flake = "git+${info.head.repo.ssh_url}?ref=${info.head.ref}";
-      # flake = "git+ssh://git@github.com/W95Psp/test-hydra?ref=${branch}";
+      flake = "git+ssh://git@github.com/${info.head.repo.full_namel}?ref=${info.head.ref}";
       checkinterval = 300;
       schedulingshares = 10;
       enableemail = false;
