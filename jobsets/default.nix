@@ -32,9 +32,10 @@ let
       builtins.mapAttrs (name: value: {inherit name value;}) l
     );
   prs-value = builtins.fromJSON (builtins.readFile prs);
+  throwJSON = x: throw (builtins.toJSON x);
 in
 {
-  jobsets = makeSpec (
+  jobsets = throwJSON (
     builtins.listToAttrs (map ({name, value}: jobOfPR name value) (attrsToList prs-value)) // {
       master = makeJob {
         description = "master";
