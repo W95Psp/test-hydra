@@ -15,15 +15,13 @@
         packages.x86_64-linux.hey = pkgs.hello;
         defaultPackage.x86_64-linux = pkgs.writeText "x" "o";
         hydraJobs.x86_64-linux.test = pkgs.runCommand "test" {} ''
-          mkdir -p $out/nix-support $out/test
-          echo "je suxxis là"
-          echo "je suis là"
-          echo "asdasjd"
-          echo 'doc someting $out/test/a' >> $out/nix-support/hydra-build-products
+          mkdir -p "$out"/nix-support "$out"/test
+          for i in $(seq 1 30); do
+              echo "Dummy log output $i"
+              sleep 1
+          done
           echo "doc manual $out/test" >> $out/nix-support/hydra-build-products
-          echo 'asdasdxxx' > $out/test/a
-          echo 'xxxx' > $out/test/b
-          echo '<b>xxxx/hey<b>here1643031309PPP' > $out/test/index.html
+          echo '<b>Example HTML manual product<b>something' > $out/test/index.html
         '';
       };
   
