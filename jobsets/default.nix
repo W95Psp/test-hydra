@@ -12,21 +12,20 @@ let
     contents = builtins.toJSON contents;
   };
   jobOfPR = id: info: {
-    name = "pr${id}";
-    value = makeJob 10
-      "PR ${id}: ${info.title}"
-      "git+ssh://git@github.com/${info.head.repo.full_name}?ref=${info.head.ref}";
+    name = "pr-${id}";
+    value = makeJob {
+      description = "PR ${id}: ${info.title}";
+      flake = "git+ssh://git@github.com/${info.head.repo.full_name}?ref=${info.head.ref}";
+    };
   };
-  makeJob = priority: description: flake: {
-    inherit description flake;
+  makeJob = {schedulingshares ? 10, keepnr ? 1, description, flake}: {
+    inherit description flake schedulingshares keepnr;
     enabled = 1;
     type = 1;
     hidden = false;
     checkinterval = 0;
-    schedulingshares = priority;
     enableemail = false;
     emailoverride = "";
-    keepnr = 1;
   };
   attrsToList = l:
     builtins.attrValues (
@@ -37,7 +36,12 @@ in
 {
   jobsets = makeSpec (
     builtins.listToAttrs (map ({name, value}: jobOfPR name value) (attrsToList prs-value)) // {
-      master = makeJob "master" "git+ssh://git@github.com/W95Psp/test-hydra" 100;
+      master = makeJob {
+        description = "master";
+        flake = "git+ssh://git@github.com/W95Psp/test-hydra";
+        keepnr = 10;
+        schedulingshares = 100;
+      };
     }
   );
 }
