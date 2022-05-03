@@ -35,14 +35,15 @@ let
   throwJSON = x: throw (builtins.toJSON x);
 in
 {
-  jobsets = makeSpec (
-    builtins.listToAttrs (map ({name, value}: jobOfPR name value) (attrsToList prs-value)) // {
-      master = makeJob {
-        description = "master";
-        flake = "git+ssh://git@github.com/W95Psp/test-hydra";
-        keepnr = 10;
-        schedulingshares = 100;
-      };
-    }
-  );
+  jobsets = throwJSON declInput;
+  # jobsets = makeSpec (
+  #   builtins.listToAttrs (map ({name, value}: jobOfPR name value) (attrsToList prs-value)) // {
+  #     master = makeJob {
+  #       description = "master";
+  #       flake = "git+ssh://git@github.com/W95Psp/test-hydra";
+  #       keepnr = 10;
+  #       schedulingshares = 100;
+  #     };
+  #   }
+  # );
 }
