@@ -13,17 +13,17 @@ let
   };
   jobOfPR = id: info: {
     name = "pr${id}";
-    value = makeJob
+    value = makeJob 10
       "PR ${id}: ${info.title}"
       "git+ssh://git@github.com/${info.head.repo.full_name}?ref=${info.head.ref}";
   };
-  makeJob = description: flake: {
+  makeJob = priority: description: flake: {
     inherit description flake;
     enabled = 1;
     type = 1;
     hidden = false;
-    checkinterval = 300;
-    schedulingshares = 10;
+    checkinterval = 0;
+    schedulingshares = priority;
     enableemail = false;
     emailoverride = "";
     keepnr = 1;
@@ -37,7 +37,7 @@ in
 {
   jobsets = makeSpec (
     builtins.listToAttrs (map ({name, value}: jobOfPR name value) (attrsToList prs-value)) // {
-      master = makeJob "master" "git+ssh://git@github.com/W95Psp/test-hydra";
+      master = makeJob "master" "git+ssh://git@github.com/W95Psp/test-hydra" 100;
     }
   );
 }
