@@ -26,7 +26,7 @@ let
     schedulingshares = 10;
     enableemail = false;
     emailoverride = "";
-    keepnr = 50;
+    keepnr = 1;
   };
   attrsToList = l:
     builtins.attrValues (
