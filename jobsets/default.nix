@@ -12,7 +12,7 @@ let
     contents = builtins.toJSON contents;
   };
   jobOfPR = id: info: {
-    name = "pr-${id}";
+    name = "pr${id}";
     value = makeJob {
       description = "PR ${id}: ${info.title}";
       flake = "git+ssh://git@github.com/${info.head.repo.full_name}?ref=${info.head.ref}";
@@ -35,7 +35,7 @@ let
   throwJSON = x: throw (builtins.toJSON x);
 in
 {
-  jobsets = throwJSON (
+  jobsets = makeSpec (
     builtins.listToAttrs (map ({name, value}: jobOfPR name value) (attrsToList prs-value)) // {
       master = makeJob {
         description = "master";
