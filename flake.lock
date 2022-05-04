@@ -19,7 +19,24 @@
     "root": {
       "inputs": {
         "nixpkgs": "nixpkgs",
+        "test": "test",
         "utils": "utils"
+      }
+    },
+    "test": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1651652820,
+        "narHash": "sha256-/Cvge0mgj6W3IMo9k5BStvH1OksvEk2tUvrUbRR5gQU=",
+        "ref": "master",
+        "rev": "eefa8bea35651a7254b9cdc5a8ad098429cba676",
+        "revCount": 2,
+        "type": "git",
+        "url": "https://git.franceschino.fr/Lucas/test.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.franceschino.fr/Lucas/test.git"
       }
     },
     "utils": {
