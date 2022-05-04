@@ -5,9 +5,11 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     utils.url = "github:numtide/flake-utils";
+    test.url = "git+https://git.franceschino.fr/Lucas/test.git";
+    test.flake = false;
   };
 
-  outputs = { self, nixpkgs, ...}:
+  outputs = { self, nixpkgs, test, ...}:
     let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
     in
@@ -21,7 +23,8 @@
               sleep 1
           done
           echo "doc manual $out/test" >> $out/nix-support/hydra-build-products
-          echo '<b>Example HTML manual product<b>Date: mar. 03 mai 2022 11:28:59 CEST' > $out/test/index.html
+          echo '<b>Example HTML manual product<b>Date: mer. 04 mai 2022 10:28:56 CEST' > $out/test/index.html
+          cat ${test}/README.md >> $out/test/index.html
         '';
       };
   
