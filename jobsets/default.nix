@@ -31,10 +31,10 @@ let
     };
   makeJob = {schedulingshares ? 10, keepnr ? 1, description, flake}: {
     inherit description flake schedulingshares keepnr;
-    enabled = 2;
+    enabled = 1;
     type = 1;
     hidden = false;
-    checkinterval = 999999999;
+    checkinterval = 14515200; # every 6 months
     enableemail = false;
     emailoverride = "";
   };
