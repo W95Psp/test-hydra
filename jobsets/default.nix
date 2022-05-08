@@ -19,14 +19,13 @@ let
     };
   };
   repo = "W95Psp/test-hydra";
-  jobOfRef = ref:
-    let branch-name = builtins.match "^refs/heads/(.*)$" ref; in
-    if isNull branch-name
+  jobOfRef = name: {ref, ...}: 
+    if isNull (builtins.match "^refs/heads/(.*)$" ref)
     then null
     else {
-      name = "branch${branch-name}";
+      name = "branch${name}";
       value = makeJob {
-        description = "Branch ${branch-name}";
+        description = "Branch ${name}";
         flake = "git+ssh://git@github.com/${repo}?ref=${ref}";
       };
     };
@@ -51,7 +50,7 @@ in
   # jobsets = makeSpec (
   jobsets = makeSpec (
     builtins.listToAttrs (map ({name, value}: jobOfPR name value) (attrsToList (readJSONFile prs))) //
-    builtins.listToAttrs (mapFilter jobOfRef (throwJSON (readJSONFile refs))) // {
+    builtins.listToAttrs (mapFilter ({name, value}: jobOfRef name value) (attrsToList (readJSONFile refs))) // {
       master = makeJob {
         description = "master";
         flake = "git+ssh://git@github.com/W95Psp/test-hydra";
