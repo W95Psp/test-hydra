@@ -11,7 +11,12 @@
     "keepnr": 3,
     "inputs": {
 	"src": { "type": "git", "value": "https://github.com/W95Psp/test-hydra.git master", "emailresponsible": false }, 
-        "prs": { "type": "githubpulls", "value": "W95Psp test-hydra", "emailresponsible": false }
+        "prs": { "type": "githubpulls", "value": "W95Psp test-hydra", "emailresponsible": false },
+	"refs": {
+	    "type": "github_refs",
+	    "value": "W95Psp test-hydra heads - ",
+	    "emailresponsible": false
+	}
     }
 }
 
