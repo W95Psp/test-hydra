@@ -31,7 +31,7 @@ let
     };
   makeJob = {schedulingshares ? 10, keepnr ? 1, description, flake}: {
     inherit description flake schedulingshares keepnr;
-    enabled = 1;
+    enabled = 2;
     type = 1;
     hidden = false;
     checkinterval = 999999999;
