@@ -43,15 +43,15 @@ let
     builtins.attrValues (
       builtins.mapAttrs (name: value: {inherit name value;}) l
     );
-  prs-value = builtins.fromJSON (builtins.readFile prs);
+  readJSONFile = f: builtins.fromJSON (builtins.readFile f);
   throwJSON = x: throw (builtins.toJSON x);
   mapFilter = f: l: builtins.filter (x: !(isNull x)) (map f l);
 in
 {
   # jobsets = makeSpec (
   jobsets = makeSpec (
-    builtins.listToAttrs (map ({name, value}: jobOfPR name value) (attrsToList prs-value)) //
-    builtins.listToAttrs (mapFilter jobOfRef (throwJSON refs)) // {
+    builtins.listToAttrs (map ({name, value}: jobOfPR name value) (attrsToList (readJSONFile prs))) //
+    builtins.listToAttrs (mapFilter jobOfRef (readJSONFile refs)) // {
       master = makeJob {
         description = "master";
         flake = "git+ssh://git@github.com/W95Psp/test-hydra";
