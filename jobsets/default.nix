@@ -34,7 +34,7 @@ let
     enabled = 1;
     type = 1;
     hidden = false;
-    checkinterval = 0;
+    checkinterval = 999999999;
     enableemail = false;
     emailoverride = "";
   };
