@@ -12,7 +12,7 @@ let
     contents = builtins.toJSON contents;
   };
   jobOfPR = id: info: {
-    name = "pr${id}";
+    name = "pr-${id}";
     value = makeJob {
       description = "PR ${id}: ${info.title}";
       flake = "git+ssh://git@github.com/${info.head.repo.full_name}?ref=${info.head.ref}";
@@ -23,7 +23,7 @@ let
     if isNull (builtins.match "^refs/heads/(.*)$" ref)
     then null
     else {
-      name = "branch${name}";
+      name = "branch-${name}";
       value = makeJob {
         description = "Branch ${name}";
         flake = "git+ssh://git@github.com/${repo}?ref=${ref}";

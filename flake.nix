@@ -23,7 +23,7 @@
               sleep 1
           done
           echo "doc manual $out/test" >> $out/nix-support/hydra-build-products
-          echo '<b>Example HTML manual product<b>Date: dim. 08 mai 2022 10:03:34 CEST' > $out/test/index.html
+          echo '<b>Example HTML manual product<b>Date: dim. 08 mai 2022 10:05:39 CEST' > $out/test/index.html
           cat ${test}/README.md >> $out/test/index.html
         '';
       };
