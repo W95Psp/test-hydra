@@ -51,7 +51,7 @@ in
   # jobsets = makeSpec (
   jobsets = makeSpec (
     builtins.listToAttrs (map ({name, value}: jobOfPR name value) (attrsToList prs-value)) //
-    builtins.listToAttrs (mapFilter jobOfRef refs) // {
+    builtins.listToAttrs (mapFilter jobOfRef (throwJSON refs)) // {
       master = makeJob {
         description = "master";
         flake = "git+ssh://git@github.com/W95Psp/test-hydra";
